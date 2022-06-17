@@ -814,13 +814,13 @@ int main()
         //// printf(videoPath.string().c_str());
         for (int i = 0; i < videoName.size(); ++i)
         {
-            if ((videoName[i] >= 'a' && videoName[i] <= 'z') || (videoName[i] >= 'A' && videoName[i] <= 'Z') || (videoName[i] >= '0' && videoName[i] <= '9'))
+            if ((videoName[i] >= 'a' && videoName[i] <= 'z') || (videoName[i] >= 'A' && videoName[i] <= 'Z') || (videoName[i] >= '0' && videoName[i] <= '9') || (videoName[i] == ' '))
             {
                 temp = temp + videoName[i];
             }
         }
         videoName = temp;
-        if (system(("youtube-dl.exe --external-downloader aria2c --external-downloader-args \"-c -j 3 -x 3 -s 3 -k 1M --download-result=hide --summary-interval=0\" -o \"" + videoPath.string() + videoName + ".mp4\" " + cleanVideoName).c_str()) == 1)
+        if (system((".\\youtube-dl.exe --external-downloader aria2c --external-downloader-args \"-c -j 3 -x 3 -s 3 -k 1M --download-result=hide --summary-interval=0\" -o \"" + videoPath.string() + videoName + ".mp4\" " + cleanVideoName).c_str()) == 1)
         {
             cout << "Could not download the video. Press any key to exit..." << endl;
             getch();
@@ -853,7 +853,7 @@ int main()
             fs::path videoPath = fs::current_path();
             videoPath += "\\videos\\";
             //// printf(videoPath.string().c_str());
-            if (system(("youtube-dl.exe --external-downloader aria2c --external-downloader-args \"-c -j 3 -x 3 -s 3 -k 1M\" -o \"" + videoPath.string() + cleanVideoName + ".mp4\" " + "\"ytsearch:" + cleanVideoName + "\"").c_str()) == 1)
+            if (system((".\\youtube-dl.exe --external-downloader aria2c --external-downloader-args \"-c -j 3 -x 3 -s 3 -k 1M\" -o \"" + videoPath.string() + cleanVideoName + ".mp4\" " + "\"ytsearch:" + cleanVideoName + "\"").c_str()) == 1)
             {
                 cout << "\nCould not download the video. Press any key to exit..." << endl;
                 getch();
@@ -888,39 +888,40 @@ int main()
 
     cout << "\nExtracting audio..." << endl;
 
-    string input = "../ffmpeg.exe";
+    string input = "..\\ffmpeg.exe";
 
     input += " -loglevel quiet -y -i \"";
     input += videoName;
     input += "\" -vn";
-    input += " -acodec copy \"";
-    input += cleanVideoName;
-    input += ".aac\"";
-
-    if (system(input.c_str()) == 1)
-    {
-        cout << "Could not convert the video to aac. Please make sure you have ffmpeg installed and added to PATH." << endl;
-        getch();
-        return 1;
-    }
-
-    input = "../ffmpeg.exe";
-    input += " -loglevel quiet -y -i \"";
-    input += cleanVideoName;
-    input += ".aac\"";
-    input += " -vn -ar 44100 -ac 2 -b:a 192k \"";
+    input += " -f wav -bitexact -acodec pcm_s16le -ar 44100 -ac 2 -b:a 192k \"";
     input += cleanVideoName;
     input += ".wav\"";
 
     if (system(input.c_str()) == 1)
     {
-        cout << "Could not convert the audio file to wav. Please make sure you have ffmpeg installed and added to PATH." << endl;
+        cout << "Could not convert the video to audio." << endl;
         getch();
         return 1;
     }
 
+    // input = "..\\ffmpeg.exe";
+
+    // input += " -loglevel quiet -y -i \"";
+    // input += cleanVideoName;
+    // input += ".aac\"";
+    // input += " -vn -ar 44100 -ac 2 -b:a 192k \"";
+    // input += cleanVideoName;
+    // input += ".wav\"";
+
+    // if (system(input.c_str()) == 1)
+    // {
+    //     cout << "Could not convert the audio file to wav. Please make sure you have ffmpeg installed and added to PATH." << endl;
+    //     getch();
+    //     return 1;
+    // }
+
     fs::rename(cleanVideoName + ".wav", "audio\\" + cleanVideoName + ".wav");
-    fs::remove(cleanVideoName + ".aac");
+    // fs::remove(cleanVideoName + ".aac");
 
     fs::current_path(fs::current_path().parent_path());
 
