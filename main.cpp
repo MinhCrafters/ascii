@@ -365,7 +365,7 @@ void displayFrame(string videoName, int numberOfFrames, string textPath, const i
     for (int t = 1; t <= numberOfFrames; t++)
     {
         clearScreen();
-        
+
         framePath = textPath + to_string(t) + ".txt";
 
         ifstream stream(framePath);
@@ -770,19 +770,22 @@ int main()
         fs::create_directory("videos");
     }
 
-    if (!fs::exists("ffmpeg.exe")) {
+    if (!fs::exists("ffmpeg.exe"))
+    {
         cout << "FFmpeg not found. Make sure to put it in the same folder the program is in." << endl;
         getch();
         return 1;
     }
 
-    if (!fs::exists("aria2c.exe")) {
+    if (!fs::exists("aria2c.exe"))
+    {
         cout << "aria2c not found. Make sure to put it in the same folder the program is in." << endl;
         getch();
         return 1;
     }
 
-    if (!fs::exists("youtube-dl.exe")) {
+    if (!fs::exists("youtube-dl.exe"))
+    {
         cout << "youtube-dl not found. Make sure to put it in the same folder the program is in." << endl;
         getch();
         return 1;
@@ -897,11 +900,24 @@ int main()
              << endl;
     }
 
+    double origFrameRate = cap.get(CAP_PROP_FPS);
+
     int frameRate = round(cap.get(CAP_PROP_FPS));
     int totalFrames = cap.get(CAP_PROP_FRAME_COUNT);
 
+    string convertedToFps = " (converted to " + to_string(frameRate) + " FPS)";
+
     cout << "Name: " << videoName << endl;
-    cout << "FPS: " << frameRate << endl;
+
+    if (origFrameRate < double(frameRate))
+    {
+        cout << "FPS: " << frameRate << convertedToFps << endl;
+    }
+    else
+    {
+        cout << "FPS: " << frameRate << endl;
+    }
+
     cout << "Total frames: " << totalFrames << endl;
 
     cout << "\nExtracting audio..." << endl;
