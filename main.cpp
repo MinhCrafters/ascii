@@ -814,7 +814,7 @@ int main()
         //// printf(videoPath.string().c_str());
         for (int i = 0; i < videoName.size(); ++i)
         {
-            if ((videoName[i] >= 'a' && videoName[i] <= 'z') || (videoName[i] >= 'A' && videoName[i] <= 'Z'))
+            if ((videoName[i] >= 'a' && videoName[i] <= 'z') || (videoName[i] >= 'A' && videoName[i] <= 'Z') || (videoName[i] >= '0' && videoName[i] <= '9'))
             {
                 temp = temp + videoName[i];
             }
