@@ -32,5 +32,6 @@
 *.app
 
 output/
+semver/
 opencv/
 .vscode/

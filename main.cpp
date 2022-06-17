@@ -1,6 +1,7 @@
 #define UNICODE
 
 #include <opencv2/opencv.hpp>
+#include <semver.hpp>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -24,7 +25,10 @@ namespace fs = std::filesystem;
 char ASCII_CHARS[] = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
 
 string author = "minhcrafters";
-string version = "v1.2.0.170622";
+
+constexpr semver::version v1 = semver::version{1, 0, 0, semver::prerelease::beta, 1};
+
+string version = v1.to_string();
 
 string title = "ASCII Player by " + author + " | " + version;
 
