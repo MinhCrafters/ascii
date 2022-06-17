@@ -905,7 +905,7 @@ int main()
     int frameRate = round(cap.get(CAP_PROP_FPS));
     int totalFrames = cap.get(CAP_PROP_FRAME_COUNT);
 
-    string convertedToFps = " (converted to " + to_string(frameRate) + " FPS)";
+    string convertedToFps = " (converted to " + to_string(frameRate) + ")";
 
     cout << "Name: " << videoName << endl;
 
