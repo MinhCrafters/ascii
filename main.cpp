@@ -820,7 +820,7 @@ int main()
             }
         }
         videoName = temp;
-        if (system(("youtube-dl --external-downloader aria2c --external-downloader-args \"-c -j 3 -x 3 -s 3 -k 1M\" -o \"" + videoPath.string() + videoName + ".mp4\" " + cleanVideoName).c_str()) == 1)
+        if (system(("youtube-dl --external-downloader aria2c --external-downloader-args \"-c -j 3 -x 3 -s 3 -k 1M --download-result=hide --summary-interval=0\" -o \"" + videoPath.string() + videoName + ".mp4\" " + cleanVideoName).c_str()) == 1)
         {
             cout << "Could not download the video. Press any key to exit..." << endl;
             getch();
