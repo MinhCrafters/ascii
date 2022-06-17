@@ -26,7 +26,7 @@ char ASCII_CHARS[] = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdb
 
 string author = "minhcrafters";
 
-constexpr semver::version v1 = semver::version{1, 3, 0, semver::prerelease::alpha, 1};
+constexpr semver::version v1 = semver::version{1, 3, 0, semver::prerelease::alpha, 2};
 
 string version = v1.to_string();
 
@@ -768,6 +768,24 @@ int main()
     if (!fs::exists("videos"))
     {
         fs::create_directory("videos");
+    }
+
+    if (!fs::exists("ffmpeg.exe")) {
+        cout << "FFmpeg not found. Make sure to put it in the same folder the program is in." << endl;
+        getch();
+        return 1;
+    }
+
+    if (!fs::exists("aria2s.exe")) {
+        cout << "aria2c not found. Make sure to put it in the same folder the program is in." << endl;
+        getch();
+        return 1;
+    }
+
+    if (!fs::exists("youtube-dl.exe")) {
+        cout << "youtube-dl not found. Make sure to put it in the same folder the program is in." << endl;
+        getch();
+        return 1;
     }
 
     char buffer[8192];
