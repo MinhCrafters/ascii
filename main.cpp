@@ -364,6 +364,8 @@ void displayFrame(string videoName, int numberOfFrames, string textPath, const i
 
     for (int t = 1; t <= numberOfFrames; t++)
     {
+        clearScreen();
+        
         framePath = textPath + to_string(t) + ".txt";
 
         ifstream stream(framePath);
@@ -396,8 +398,6 @@ void displayFrame(string videoName, int numberOfFrames, string textPath, const i
         std::this_thread::sleep_until(m_EndFrame);
         m_BeginFrame = m_EndFrame;
         m_EndFrame = m_BeginFrame + invFpsLimit;
-
-        clearScreen();
     }
 }
 
