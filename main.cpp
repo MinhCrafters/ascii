@@ -238,8 +238,6 @@ void loadFrames(Mat image, int frameNumber, int size)
 
     maximizeWindow();
 
-    this_thread::sleep_for(chrono::milliseconds(generate_random_number(rng) * 300));
-
     CONSOLE_SCREEN_BUFFER_INFO csbi;
 
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
