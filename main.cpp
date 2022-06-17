@@ -234,9 +234,11 @@ void loadFrames(Mat image, int frameNumber, int size)
 
     Mat imageResized;
 
+    setConsoleSize(size);
+
     maximizeWindow();
 
-    setConsoleSize(size);
+    this_thread::sleep_for(chrono::milliseconds(generate_random_number(rng) * 300));
 
     CONSOLE_SCREEN_BUFFER_INFO csbi;
 
@@ -344,7 +346,7 @@ void displayFrame(string videoName, int numberOfFrames, string textPath, const i
 
     system("cls");
 
-    this_thread::sleep_for(chrono::milliseconds(generate_random_number(rng) * 200));
+    this_thread::sleep_for(chrono::milliseconds(generate_random_number(rng) * 400));
 
     std::thread play_audio(playAudio, videoName, pathToGo);
     // playAudio(videoName, pathToGo);
