@@ -26,7 +26,7 @@ char ASCII_CHARS[] = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdb
 
 string author = "minhcrafters";
 
-constexpr semver::version v1 = semver::version{1, 2, 1, semver::prerelease::beta, 3};
+constexpr semver::version v1 = semver::version{1, 3, 0, semver::prerelease::alpha, 1};
 
 string version = v1.to_string();
 
@@ -879,7 +879,7 @@ int main()
              << endl;
     }
 
-    int frameRate = cap.get(CAP_PROP_FPS);
+    int frameRate = round(cap.get(CAP_PROP_FPS));
     int totalFrames = cap.get(CAP_PROP_FRAME_COUNT);
 
     cout << "Name: " << videoName << endl;
