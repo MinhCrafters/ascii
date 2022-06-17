@@ -26,7 +26,7 @@ char ASCII_CHARS[] = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdb
 
 string author = "minhcrafters";
 
-constexpr semver::version v1 = semver::version{1, 0, 0, semver::prerelease::beta, 1};
+constexpr semver::version v1 = semver::version{1, 2, 1, semver::prerelease::beta, 1};
 
 string version = v1.to_string();
 
