@@ -378,8 +378,12 @@ void displayFrame(string videoName, int numberOfFrames, string textPath, const i
 
         veryFinalDisplay = strStream.str();
 
-        printf("\r");
-        printf("%s", veryFinalDisplay.c_str());
+        // printf("\r");
+        // printf("%s", veryFinalDisplay.c_str());
+        // fflush(stdout);
+
+        fputs("\r", stdout);
+        fputs(veryFinalDisplay.c_str(), stdout);
         fflush(stdout);
 
         auto time_in_seconds = chrono::time_point_cast<chrono::seconds>(chrono::system_clock::now());
@@ -603,7 +607,7 @@ void processVideo(VideoCapture cap, string videoName, int frameRate, int totalFr
 
     if (toupper(changeSize) == 'Y')
     {
-        get_int(size, "Please enter the size (The lower it is, the better the result will be. I recommend not going lower than 8, as this could cause lag or desynchronization): ", "Sorry, that's not an integer.\n");
+        get_int(size, "Please enter the size (The lower it is, the better the result will be. I recommend not going lower than 7, as this could cause lag, visual tearing or desynchronization): ", "Sorry, that's not an integer.\n");
     }
 
     showCursor(false);
@@ -791,9 +795,9 @@ int main()
         return 1;
     }
 
-    char buffer[8192];
+    // char buffer[8192];
 
-    setvbuf(stdout, buffer, _IOFBF, sizeof(buffer));
+    // setvbuf(stdout, buffer, _IOFBF, sizeof(buffer));
 
     string videoName;
 
