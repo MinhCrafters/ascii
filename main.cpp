@@ -26,7 +26,7 @@ char ASCII_CHARS[] = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdb
 
 string author = "minhcrafters";
 
-constexpr semver::version v1 = semver::version{1, 2, 1, semver::prerelease::beta, 1};
+constexpr semver::version v1 = semver::version{1, 2, 1, semver::prerelease::beta, 2};
 
 string version = v1.to_string();
 
@@ -359,7 +359,7 @@ void displayFrame(string videoName, int numberOfFrames, string textPath, const i
     unsigned frame_count_per_second = 0;
     auto prev_time_in_seconds = chrono::time_point_cast<chrono::seconds>(m_BeginFrame);
 
-    string fpsTitle = " - " + to_string(frame_count_per_second) + " FPS";
+    string fpsTitle = " | " + to_string(frame_count_per_second) + " FPS";
     SetConsoleTitleA((title + fpsTitle).c_str());
 
     for (int t = 1; t <= numberOfFrames; t++)
