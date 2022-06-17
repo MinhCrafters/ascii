@@ -911,7 +911,7 @@ int main()
 
     if (origFrameRate < double(frameRate))
     {
-        cout << "FPS: " << frameRate << convertedToFps << endl;
+        cout << "FPS: " << std::fixed << std::setprecision(2) << origFrameRate << convertedToFps << endl;
     }
     else
     {
