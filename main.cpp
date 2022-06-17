@@ -776,7 +776,7 @@ int main()
         return 1;
     }
 
-    if (!fs::exists("aria2s.exe")) {
+    if (!fs::exists("aria2c.exe")) {
         cout << "aria2c not found. Make sure to put it in the same folder the program is in." << endl;
         getch();
         return 1;
