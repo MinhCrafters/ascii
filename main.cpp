@@ -666,7 +666,7 @@ void processVideo(VideoCapture cap, string videoName, int frameRate, int totalFr
         }
         // std::cout << "] " << int(progress * 100.0) << "%\r";
         // printf("] %d%% - Frame %d of %d\r", int(progress * 100.0), frameNumber, totalFrames);
-        cout << "] " << int(text_progress * 100.0) + 1 << "% - Frame " << frameNumber + 1 << " of " << totalFrames << " - " << elapsedTime(time_taken) << " elapsed\r";
+        cout << "] " << int(text_progress * 100.0) + 1 << "% - Frame " << frameNumber << " of " << totalFrames << " - " << elapsedTime(time_taken) << " elapsed\r";
         cout.flush();
 
         // this_thread::sleep_for(chrono::nanoseconds(generate_random_number(rng)));
