@@ -828,6 +828,7 @@ int main()
         }
         cout << "Video downloaded." << endl;
         // printf("\nEnter new name for the video: ");
+        cleanVideoName = videoName;
         videoName += ".mp4";
     }
     else
