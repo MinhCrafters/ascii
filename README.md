@@ -1,3 +1,1 @@
-# Yet another ASCII Video Player (for Windows)
-
-..but I fixed (almost) everything from lagging to audio/video desynchronization issues. If you find any more bugs, open a PR or report via a tab called "Issues".
+# Yet another ASCII Video Player (Windows GCC)
